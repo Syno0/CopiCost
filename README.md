@@ -56,9 +56,9 @@ Command `CopiCost: Show Cost Report` opens a dashboard with:
 code --install-extension copicost-0.0.1.vsix
 ```
 
-Or in VS Code: **Cmd+Shift+P** → `Extensions: Install from VSIX...` → select the file.
+Or in VS Code: **Cmd+Shift+P** (Mac) / **Ctrl+Shift+P** (Windows/Linux) → `Extensions: Install from VSIX...` → select the file.
 
-Then reload VS Code (**Cmd+Shift+P** → `Developer: Reload Window`).
+Then reload VS Code (**Cmd+Shift+P** / **Ctrl+Shift+P** → `Developer: Reload Window`).
 
 ### Option B — Build from source
 
@@ -85,7 +85,7 @@ code --install-extension copicost-0.0.1.vsix
 
 CopiCost reads logs that Copilot only writes when this setting is on:
 
-1. Open **Settings** (Cmd+,)
+1. Open **Settings** (**Cmd+,** on Mac, **Ctrl+,** on Windows/Linux)
 2. Search for `agentDebugLog`
 3. Enable **GitHub › Copilot › Chat › Agent Debug Log: File Logging Enabled**
 
@@ -99,7 +99,7 @@ New sessions will be logged from that point on. Past sessions without logs will 
 
 ## Settings
 
-Open **Cmd+,** and search for **`copicost`** to access all options.
+Open **Cmd+,** (Mac) / **Ctrl+,** (Windows/Linux) and search for **`copicost`** to access all options.
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
