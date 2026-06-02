@@ -97,6 +97,27 @@ Or add this to your `settings.json`:
 
 New sessions will be logged from that point on. Past sessions without logs will not appear.
 
+## Settings
+
+Open **Cmd+,** and search for **`copicost`** to access all options.
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `copicost.currency` | `"USD"` \| `"EUR"` | `"USD"` | Currency used to display all costs |
+| `copicost.eurUsdRate` | number | `0.92` | EUR/USD rate applied when currency is EUR |
+| `copicost.monthlyBudgetUsd` | number | `20` | Monthly budget in USD — used to compute the % in the status bar |
+
+Or add them directly to your `settings.json`:
+
+```json
+{
+  "copicost.currency": "EUR",
+  "copicost.eurUsdRate": 0.92
+}
+```
+
+> **Note:** All internal calculations are done in USD. The currency setting only affects how amounts are displayed.
+
 ## Commands
 
 | Command | Description |
