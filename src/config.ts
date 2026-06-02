@@ -1,6 +1,39 @@
 /**
  * CopiCost configuration — all tuneable values in one place.
  */
+import * as vscode from "vscode";
+
+// --- Currency ---
+
+export type Currency = "USD" | "EUR";
+
+export function getCurrencyConfig(): { currency: Currency; rate: number } {
+  const cfg = vscode.workspace.getConfiguration("copicost");
+  return {
+    currency: cfg.get<Currency>("currency", "USD"),
+    rate: cfg.get<number>("eurUsdRate", 0.92),
+  };
+}
+
+export function formatCurrency(usd: number): string {
+  const { currency, rate } = getCurrencyConfig();
+  const amount = currency === "EUR" ? usd * rate : usd;
+  const sym = currency === "EUR" ? "€" : "$";
+
+  if (amount === 0) {
+    return `${sym}0`;
+  }
+  if (amount < 0.001) {
+    return `<${sym}0.001`;
+  }
+  if (amount < 0.01) {
+    return `${sym}${amount.toFixed(4)}`;
+  }
+  if (amount < 1) {
+    return `${sym}${amount.toFixed(3)}`;
+  }
+  return `${sym}${amount.toFixed(2)}`;
+}
 
 // --- Budget ---
 

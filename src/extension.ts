@@ -12,6 +12,8 @@ import {
   MONTHLY_BUDGET_USD,
   STATUS_BAR_WARNING_PCT,
   STATUS_BAR_CRITICAL_PCT,
+  formatCurrency,
+  getCurrencyConfig,
 } from "./config";
 
 let sessionCosts: SessionCost[] = [];
@@ -85,8 +87,16 @@ function updateStatusBar(): void {
     icon = "$(warning)";
   }
 
-  statusBarItem.text = `${icon} $${monthCost.toFixed(3)} · ${pctStr}% of $${MONTHLY_BUDGET_USD}/mo`;
-  statusBarItem.tooltip = `CopiCost: $${monthCost.toFixed(4)} spent this month\n${pctStr}% of $${MONTHLY_BUDGET_USD} monthly budget\nClick for full report`;
+  const { currency, rate } = getCurrencyConfig();
+  const sym = currency === "EUR" ? "€" : "$";
+  const budgetDisplay =
+    currency === "EUR"
+      ? `${sym}${(MONTHLY_BUDGET_USD * rate).toFixed(0)}`
+      : `${sym}${MONTHLY_BUDGET_USD}`;
+  const costDisplay = formatCurrency(monthCost);
+
+  statusBarItem.text = `${icon} ${costDisplay} · ${pctStr}% of ${budgetDisplay}/mo`;
+  statusBarItem.tooltip = `CopiCost: ${costDisplay} spent this month\n${pctStr}% of ${budgetDisplay} monthly budget\nClick for full report`;
   statusBarItem.backgroundColor =
     pct >= STATUS_BAR_CRITICAL_PCT
       ? new vscode.ThemeColor("statusBarItem.warningBackground")

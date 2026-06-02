@@ -55,6 +55,29 @@
           "group": "navigation"
         }
       ]
+    },
+    "configuration": {
+      "title": "CopiCost",
+      "properties": {
+        "copicost.currency": {
+          "type": "string",
+          "enum": [
+            "USD",
+            "EUR"
+          ],
+          "enumDescriptions": [
+            "Display costs in US dollars ($)",
+            "Display costs in euros (€)"
+          ],
+          "default": "USD",
+          "description": "Currency used to display all costs."
+        },
+        "copicost.eurUsdRate": {
+          "type": "number",
+          "default": 0.92,
+          "description": "EUR/USD exchange rate used when currency is set to EUR (e.g. 0.92 means 1 USD = 0.92 EUR)."
+        }
+      }
     }
   },
   "scripts": {

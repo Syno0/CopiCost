@@ -4,6 +4,7 @@ import {
   COST_THRESHOLD_HIGH,
   COST_THRESHOLD_MEDIUM,
   COST_THRESHOLD_LOW,
+  formatCurrency,
 } from "./config";
 
 export class SessionTreeProvider implements vscode.TreeDataProvider<TreeItem> {
@@ -221,19 +222,7 @@ class RequestTreeItem extends vscode.TreeItem {
 // --- Formatting helpers (exported for reuse) ---
 
 export function formatUsd(usd: number): string {
-  if (usd === 0) {
-    return "$0";
-  }
-  if (usd < 0.001) {
-    return `<$0.001`;
-  }
-  if (usd < 0.01) {
-    return `$${usd.toFixed(4)}`;
-  }
-  if (usd < 1) {
-    return `$${usd.toFixed(3)}`;
-  }
-  return `$${usd.toFixed(2)}`;
+  return formatCurrency(usd);
 }
 
 export function formatTokens(n: number): string {
