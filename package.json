@@ -1,0 +1,70 @@
+{
+  "name": "copicost",
+  "displayName": "CopiCost - Copilot Request Cost Calculator",
+  "description": "Calculate the cost of each GitHub Copilot request based on Agent Debug Logs",
+  "version": "0.0.1",
+  "publisher": "sb",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:copicost.sessions"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "copicost",
+          "title": "CopiCost",
+          "icon": "$(dashboard)"
+        }
+      ]
+    },
+    "views": {
+      "copicost": [
+        {
+          "id": "copicost.sessions",
+          "name": "Sessions"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "copicost.refresh",
+        "title": "CopiCost: Refresh Sessions",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "copicost.showReport",
+        "title": "CopiCost: Show Cost Report"
+      },
+      {
+        "command": "copicost.showRequestDetail",
+        "title": "CopiCost: Show Request Detail"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "copicost.refresh",
+          "when": "view == copicost.sessions",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.100.0",
+    "typescript": "^5.5.0"
+  }
+}
