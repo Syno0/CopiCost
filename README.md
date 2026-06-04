@@ -171,7 +171,7 @@ Example for Claude Opus 4.6:
 | Output     | 2500¢/M → $25.00/M |
 | Cache read | 50¢/M → $0.50/M |
 
-If `models.json` is absent (old sessions), CopiCost falls back to a hardcoded table in [`src/config.ts`](src/config.ts).
+If `models.json` is absent (old sessions), CopiCost falls back to a hardcoded table in `src/config.ts`.
 
 ### 4. Formula
 
